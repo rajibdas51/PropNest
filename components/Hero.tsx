@@ -21,7 +21,7 @@ const Hero = () => {
               type='text'
               id='location'
               placeholder='Enter Location (City, State, Zip, etc'
-              className='w-full px-4 py-3 rounded-lg bg-white text-gray-800 focus:outline-none focus:ring focus:ring-blue-500'
+              className='w-full px-4 py-3 rounded-lg bg-white text-gray-800 focus:outline-none focus:ring focus:ring-indigo-500'
             />
           </div>
           <div className='w-full md:w-2/5 md:pl-2'>
@@ -30,7 +30,7 @@ const Hero = () => {
             </label>
             <select
               id='property-type'
-              className='w-full px-4 py-3 rounded-lg bg-white text-gray-800 focus:outline-none focus:ring focus:ring-blue-500'
+              className='w-full px-4 py-3 rounded-lg bg-white text-gray-800 focus:outline-none focus:ring focus:ring-indigo-500'
             >
               <option value='All'>All</option>
               <option value='Apartment'>Apartment</option>
@@ -45,7 +45,7 @@ const Hero = () => {
           </div>
           <button
             type='submit'
-            className='md:ml-4 mt-4 md:mt-0 w-full md:w-auto px-6 py-3 rounded-lg bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-500'
+            className='md:ml-4 mt-4 md:mt-0 w-full md:w-auto px-6 py-3 rounded-lg bg-indigo-500 text-white hover:bg-indigo-600 focus:outline-none focus:ring focus:ring-indigo-500'
           >
             Search
           </button>
