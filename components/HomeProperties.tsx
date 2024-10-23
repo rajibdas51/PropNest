@@ -35,6 +35,7 @@ type PropertyType = {
   updatedAt: string;
 };
 const HomeProperties = async () => {
+  await connectDB();
   const recentProperties = await Property.find({})
     .sort({ createdAt: -1 })
     .limit(3)
