@@ -4,6 +4,7 @@ import Property from '@/models/Property';
 import PropertyHeaderImage from '@/components/PropertyHeaderImage';
 import Link from 'next/link';
 import { FaArrowLeft } from 'react-icons/fa';
+import PropertyDetails from '@/components/PropertyDetails';
 interface Params {
   params: {
     id: string;
@@ -15,7 +16,7 @@ const PropertyDetailsPage = async ({ params }: Params) => {
   const property = await Property.findById(params.id).lean();
   return (
     <>
-      <PropertyHeaderImage image={property.images[0]} />
+      <PropertyHeaderImage image={property?.images[0]} />
       <section>
         <div className='container m-auto py-6 px-6'>
           <Link
@@ -31,6 +32,7 @@ const PropertyDetailsPage = async ({ params }: Params) => {
         <div className='container m-auto py-10 px-6'>
           <div className='grid grid-cols-1 md:grid-cols-70/30 w-full'>
             {/* Property info*/}
+            <PropertyDetails property={property} />
           </div>
         </div>
       </section>

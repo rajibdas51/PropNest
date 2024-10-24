@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
 
-const PropertyHeaderImage = ({ image }: string) => {
+const PropertyHeaderImage = ({ image }: any) => {
   return (
     <div className='container-xl m-auto'>
       <div className='grid grid-cols-1'>
