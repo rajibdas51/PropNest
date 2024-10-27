@@ -11,6 +11,13 @@ const config: Config = {
       fontFamily: {
         sans: ['Poppins', 'sans-serif'],
       },
+      colors: {
+        primary: '#4F46E5',
+      },
+      // Add custom hover styles to select options
+      backgroundColor: {
+        'option-hover': '#4F46E5', // indigo-600 color
+      },
       gridTemplateColumns: {
         '70/30': '70% 28%',
       },

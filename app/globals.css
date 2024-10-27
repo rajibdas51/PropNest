@@ -5,6 +5,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --color-primary: #4f46e5;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -24,4 +25,18 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+}
+/* globals.css */
+
+/* Change select dropdown background color */
+
+select option:checked,
+select option:hover {
+  box-shadow: 0 0 10px 100px indigo inset;
+}
+/* globals.css */
+/* globals.css */
+.custom-select option:hover {
+  background-color: #6366f1; /* Hex code for Tailwind's indigo-500 */
+  color: #ffffff; /* Optional: white text */
 }
