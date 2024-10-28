@@ -4,6 +4,7 @@ import Property from '@/models/Property';
 import { getSessionUser } from '@/utils/getSessionUser';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
+import cloudinary from '@/config/cloudinary';
 interface FormDataType {
   type: string;
   name: string;
@@ -42,10 +43,7 @@ async function addProperty(formData: FormDataType) {
   const { userId } = sessionUser;
   // Access all the values of amenities and images
   const amenities = formData.getAll('amenities');
-  const images = formData
-    .getAll('images')
-    .filter((image) => image.name != '')
-    .map((image) => image.name);
+  const images = formData.getAll('images').filter((image) => image.name != '');
 
   const propertyData = {
     owner: userId,
@@ -72,7 +70,6 @@ async function addProperty(formData: FormDataType) {
       email: formData.get('seller_info.email'),
       phone: formData.get('seller_info.phone'),
     },
-    images,
   };
 
   const newProperty = new Property(propertyData);
