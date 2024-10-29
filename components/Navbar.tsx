@@ -82,14 +82,16 @@ const Navbar = () => {
                 >
                   Properties
                 </Link>
-                <Link
-                  href='/properties/add'
-                  className={`${
-                    pathname === '/properties/add' ? 'bg-indigo-900' : ''
-                  } text-white hover:bg-indigo-900 hover:text-white rounded-xl px-4 py-2`}
-                >
-                  Add Property
-                </Link>
+                {session && (
+                  <Link
+                    href='/properties/add'
+                    className={`${
+                      pathname === '/properties/add' ? 'bg-indigo-900' : ''
+                    } text-white hover:bg-indigo-900 hover:text-white rounded-xl px-4 py-2`}
+                  >
+                    Add Property
+                  </Link>
+                )}
               </div>
             </div>
           </div>
