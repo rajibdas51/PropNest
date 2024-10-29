@@ -16,7 +16,7 @@ const PropertyDetailsPage = async ({ params }: Params) => {
   const property = await Property.findById(params.id).lean();
   return (
     <>
-      <PropertyHeaderImage image={property?.images[0]} />
+      <PropertyHeaderImage image={property.images[0]} />
       <section>
         <div className='container m-auto py-6 px-6'>
           <Link
