@@ -3,6 +3,7 @@ import Link from 'next/link';
 import React from 'react';
 import { useState } from 'react';
 import deleteProperty from '@/app/actions/deleteProperty';
+import { toast } from 'react-toastify';
 // Define types for nested objects within Property
 type Location = {
   street: string;
@@ -64,6 +65,7 @@ const ProfileProperties = ({
       (property: any) => property._id != propertyId
     );
     setProperties(updatedProperties);
+    toast.success('Property Deleted Successfully!');
   };
   return (
     <>
