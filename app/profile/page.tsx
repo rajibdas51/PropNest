@@ -4,6 +4,50 @@ import { getSessionUser } from '@/utils/getSessionUser';
 import profileDefault from '@/assets/images/profile.png';
 import connectDB from '@/config/database';
 import ProfileProperties from '@/components/ProfileProperties';
+import { convertToSerializeableObject } from '@/utils/convertToObject';
+// Define types for nested objects within Property
+type Location = {
+  street: string;
+  city: string;
+  state: string;
+  zipcode: string;
+};
+
+type Rates = {
+  nightly: number | null;
+  weekly: number;
+  monthly: number;
+};
+
+type SellerInfo = {
+  name: string;
+  email: string;
+  phone: string;
+};
+
+// Define the main Property type
+type Property = {
+  _id: string; // Typically, ObjectId is represented as a string in TypeScript
+  owner: string;
+  name: string;
+  type: string;
+  description: string;
+  location: Location;
+  beds: number;
+  baths: string;
+  square_feet: number;
+  amenities: string[];
+  rates: Rates;
+  seller_info: SellerInfo;
+  images: string[];
+  is_featured: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+};
+
+type PropertiesType = {
+  Property: Property[];
+};
 const ProfilePage = async () => {
   await connectDB();
   const sessionUser = await getSessionUser();
@@ -12,8 +56,9 @@ const ProfilePage = async () => {
     throw new Error('User ID is required!');
   }
   // The .lean() method is a Mongoose function that returns plain JavaScript objects instead of Mongoose documents. This reduces memory usage and speeds up the query by removing Mongoose-specific methods and properties.
-  const properties = await Property.find({ owner: userId }).lean();
-  console.log(properties);
+  const propertiesDocs = await Property.find({ owner: userId }).lean();
+  // we are making the document serializeableobject to avoid warnings
+  const properties = propertiesDocs.map(convertToSerializeableObject);
   return (
     <section className='bg-indigo-50'>
       <div className='container m-auto py-24'>

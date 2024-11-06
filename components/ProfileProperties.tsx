@@ -1,7 +1,8 @@
 'use client';
+import Link from 'next/link';
 import React from 'react';
 import { useState } from 'react';
-
+import deleteProperty from '@/app/actions/deleteProperty';
 // Define types for nested objects within Property
 type Location = {
   street: string;
@@ -51,11 +52,15 @@ const ProfileProperties = ({
   properties: PropertiesType;
 }) => {
   const [properties, setProperties] = useState(initialProperties);
+
+  const handleDeleteProperty = async (propertyId: string) => {
+    const confirmed;
+  };
   return (
     <>
       {properties.map((property: Property) => (
         <div className='mb-10' key={property._id}>
-          <a href='/property.html'>
+          <Link href={`/properties/${property._id}`}>
             <img
               className='h-32 w-full rounded-md object-cover'
               src={`${property.images[0]}`}
@@ -63,7 +68,7 @@ const ProfileProperties = ({
               width={1000}
               height={2}
             />
-          </a>
+          </Link>
           <div className='mt-2'>
             <p className='text-lg font-semibold'>{property.name}</p>
             <p className='text-gray-600'>
@@ -81,6 +86,7 @@ const ProfileProperties = ({
             <button
               className='bg-red-500 text-white px-3 py-2 rounded-md hover:bg-red-600'
               type='button'
+              onClick={() => handleDeleteProperty(property._id)}
             >
               Delete
             </button>
