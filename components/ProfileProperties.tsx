@@ -89,7 +89,7 @@ const ProfileProperties = ({
           </div>
           <div className='mt-2'>
             <a
-              href='/add-property.html'
+              href={`/properties/${property._id}/edit`}
               className='bg-indigo-500 text-white px-3 py-3 rounded-md mr-2 hover:bg-indigo-600'
             >
               Edit
