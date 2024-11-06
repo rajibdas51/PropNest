@@ -1,18 +1,21 @@
+'use server';
 import cloudinary from '@/config/cloudinary';
 import connectDB from '@/config/database';
 import Property from '@/models/Property';
 import { getSessionUser } from '@/utils/getSessionUser';
-import { AnyArray } from 'mongoose';
 import { revalidatePath } from 'next/cache';
 
 async function deleteProperty(propertyId: string) {
-  await connectDB();
   const sessionUser = await getSessionUser();
-  if (!sessionUser || sessionUser.userId) {
+  const { userId } = sessionUser;
+  console.log(userId);
+  // check is session exists
+  if (!userId) {
     throw new Error('User ID is required!');
   }
 
-  const { userId } = sessionUser;
+  await connectDB();
+
   const property = await Property.findById(propertyId);
   if (!property) throw new Error('Property Not Found!');
 
@@ -34,7 +37,8 @@ async function deleteProperty(propertyId: string) {
     }
   }
 
-  await Property.deleteOne();
+  // delete property from database
+  await property.deleteOne();
 
   revalidatePath('/', 'layout');
 }

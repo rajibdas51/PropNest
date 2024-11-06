@@ -54,7 +54,16 @@ const ProfileProperties = ({
   const [properties, setProperties] = useState(initialProperties);
 
   const handleDeleteProperty = async (propertyId: string) => {
-    const confirmed;
+    const confirmed = window.confirm(
+      'Are you sure you want to delte this property?'
+    );
+    if (!confirmed) return;
+
+    await deleteProperty(propertyId);
+    const updatedProperties = properties.filter(
+      (property: any) => property._id != propertyId
+    );
+    setProperties(updatedProperties);
   };
   return (
     <>
