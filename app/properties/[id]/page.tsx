@@ -12,8 +12,7 @@ interface Params {
     id: string;
   };
 }
-const PropertyDetailsPage = async ({ params }: Params) => {
-  console.log(params);
+const PropertyPage = async ({ params }: Params) => {
   await connectDB();
   const propertyDoc = await Property.findById(params.id).lean();
   const property = convertToSerializeableObject(propertyDoc);
@@ -21,10 +20,11 @@ const PropertyDetailsPage = async ({ params }: Params) => {
   if (!property) {
     return (
       <h1 className='text-center text-2xl font-bold mt-10'>
-        Property Not Found!
+        Property Not Found
       </h1>
     );
   }
+
   return (
     <>
       <PropertyHeaderImage image={property.images[0]} />
@@ -32,18 +32,18 @@ const PropertyDetailsPage = async ({ params }: Params) => {
         <div className='container m-auto py-6 px-6'>
           <Link
             href='/properties'
-            className='text-indigo-500 hover:text-indigo-600 flex items-center justify-start gap-1'
+            className='text-blue-500 hover:text-blue-600 flex items-center'
           >
-            <FaArrowLeft />
-            Back to Properties
+            <FaArrowLeft className='mr-2' /> Back to Properties
           </Link>
         </div>
       </section>
-      <section className='bg-indigo-50'>
+      <section className='bg-blue-50'>
         <div className='container m-auto py-10 px-6'>
-          <div className='grid grid-cols-1 md:grid-cols-70/30 w-full'>
-            {/* Property info*/}
+          <div className='grid grid-cols-1 md:grid-cols-70/30 w-full gap-6'>
             <PropertyDetails property={property} />
+
+            {/* <!-- Sidebar --> */}
           </div>
         </div>
       </section>
@@ -51,5 +51,4 @@ const PropertyDetailsPage = async ({ params }: Params) => {
     </>
   );
 };
-
-export default PropertyDetailsPage;
+export default PropertyPage;
