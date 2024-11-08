@@ -7,6 +7,9 @@ import { FaArrowLeft } from 'react-icons/fa';
 import PropertyDetails from '@/components/PropertyDetails';
 import PropertyImages from '@/components/PropertyImages';
 import { convertToSerializeableObject } from '@/utils/convertToObject';
+import BookmarkButton from '@/components/BookmarkButton';
+import ShareButtons from '@/components/ShareButtons';
+import PropertyContactForm from '@/components/PropertyContactForm';
 interface Params {
   params: {
     id: string;
@@ -44,7 +47,11 @@ const PropertyPage = async ({ params }: Params) => {
             <PropertyDetails property={property} />
 
             {/* <!-- Sidebar --> */}
-            <aside className='space-y-4'></aside>
+            <aside className='space-y-4'>
+              <BookmarkButton property={property} />
+              <ShareButtons property={property} />
+              <PropertyContactForm property={property} />
+            </aside>
           </div>
         </div>
       </section>
