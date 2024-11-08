@@ -44,6 +44,7 @@ const PropertyPage = async ({ params }: Params) => {
             <PropertyDetails property={property} />
 
             {/* <!-- Sidebar --> */}
+            <aside className='space-y-4'></aside>
           </div>
         </div>
       </section>
