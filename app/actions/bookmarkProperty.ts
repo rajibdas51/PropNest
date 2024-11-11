@@ -10,7 +10,7 @@ async function bookmarkProperty(propertyId: string) {
   const sessionUser = await getSessionUser();
 
   if (!sessionUser || !sessionUser.userId) {
-    throw new Error('User ID is required');
+    return { error: 'User ID is required' };
   }
 
   const { userId } = sessionUser;

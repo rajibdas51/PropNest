@@ -7,8 +7,8 @@ async function checkBookmarkStatus(propertyId: string) {
   await connectDB();
 
   const sessionUser = await getSessionUser();
-  if (sessionUser || sessionUser.userId) {
-    throw new Error('User ID is required!');
+  if (!sessionUser || !sessionUser.userId) {
+    return { error: 'User ID is required' };
   }
   const { userId } = sessionUser;
   // Find user in database
