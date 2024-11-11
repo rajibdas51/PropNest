@@ -1,7 +1,37 @@
 import React from 'react';
 import { FaPaperPlane } from 'react-icons/fa';
-
-const PropertyContactForm = () => {
+interface PropertyType {
+  _id: string;
+  owner: string;
+  name: string;
+  type: string;
+  description: string;
+  location: {
+    street: string;
+    city: string;
+    state: string;
+    zipcode: string;
+  };
+  beds: number;
+  baths: number;
+  square_feet: number;
+  amenities: string[];
+  rates: {
+    weekly: number;
+    monthly: number;
+    nightly: number;
+  };
+  seller_info: {
+    name: string;
+    email: string;
+    phone: string;
+  };
+  images: string[];
+  is_featured: boolean;
+  createdAt: string;
+  updatedAt: string;
+}
+const PropertyContactForm = ({ property }: { property: PropertyType }) => {
   return (
     <div className='bg-white p-6 rounded-lg shadow-md'>
       <h3 className='text-xl font-bold mb-2'>Contact Property Manager</h3>
