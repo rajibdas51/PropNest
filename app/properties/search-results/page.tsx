@@ -62,6 +62,7 @@ const SearchResultPage = async ({
       { 'location.state': locationPattern },
       { 'location.zipcode': locationPattern },
     ],
+    type: new RegExp(propertyType, 'i'),
   };
 
   if (propertyType && propertyType !== 'All') {
