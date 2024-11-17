@@ -50,7 +50,7 @@ type PropertiesType = {
 const ProfileProperties = ({
   properties: initialProperties,
 }: {
-  properties: PropertiesType;
+  properties: Property[];
 }) => {
   const [properties, setProperties] = useState(initialProperties);
 
