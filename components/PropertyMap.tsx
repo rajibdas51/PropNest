@@ -7,7 +7,7 @@ import Image from 'next/image';
 import pin from '@/assets/images/pin.svg';
 import Spinner from './Spinner';
 
-const PropertyMap = ({ property }) => {
+const PropertyMap = ({ property }: any) => {
   const [lat, setLat] = useState(null);
   const [lng, setLng] = useState(null);
   const [viewport, setViewport] = useState({
