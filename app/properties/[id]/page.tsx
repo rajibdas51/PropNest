@@ -10,6 +10,7 @@ import { convertToSerializeableObject } from '@/utils/convertToObject';
 import BookmarkButton from '@/components/BookmarkButton';
 import ShareButtons from '@/components/ShareButtons';
 import PropertyContactForm from '@/components/PropertyContactForm';
+
 interface Params {
   params: {
     id: string;
