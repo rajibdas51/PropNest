@@ -7,7 +7,10 @@ const InfoBoxes = () => {
     <>
       <section>
         <div className='container-xl lg:container m-auto'>
-          <div className='grid grid-col1 md:grid-cols-2 gap-6 p-4 '>
+          <h1 className='text-4xl text-indigo-600 text-center font-bold mb-8'>
+            See How PropNest Can Help
+          </h1>
+          <div className='grid grid-col1 md:grid-cols-2 gap-20 p-4 justify'>
             <InfoBox
               heading='For Renters'
               bgColor='bg-gray-100'

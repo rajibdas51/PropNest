@@ -5,7 +5,14 @@ import { getSessionUser } from '@/utils/getSessionUser';
 import { revalidatePath } from 'next/cache';
 
 import { redirect } from 'next/navigation';
-interface FormDataType {
+
+// define formDataType
+interface FormDataType extends FormData {
+  getAll(name: string): FormDataEntryValue[];
+  get(name: string): FormDataEntryValue | null;
+}
+// Property data interface
+interface PropertyData {
   type: string;
   name: string;
   description?: string;
@@ -18,7 +25,7 @@ interface FormDataType {
   beds: number;
   baths: number;
   square_feet: number;
-  amenities?: string[]; // Assuming multiple amenities can be selected
+  amenities?: string[];
   rates?: {
     weekly?: number;
     monthly?: number;
@@ -29,12 +36,16 @@ interface FormDataType {
     email: string;
     phone?: string;
   };
-  images: string[]; // Represents selected images
+  images?: string[];
+  owner: string;
 }
 async function updateProperty(propertyId: string, formData: FormDataType) {
   await connectDB();
   const sessionUser = await getSessionUser();
 
+  if (!sessionUser || !sessionUser.userId) {
+    throw new Error('User ID is required!');
+  }
   const { userId } = sessionUser;
 
   const existingProperty = await Property.findById(propertyId);
@@ -44,6 +55,7 @@ async function updateProperty(propertyId: string, formData: FormDataType) {
     throw new Error('Current user does not own this property! ');
   }
 
+  // create propertyData object
   const propertyData = {
     type: formData.get('type'),
     name: formData.get('name'),

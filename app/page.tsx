@@ -4,6 +4,7 @@ import Image from 'next/image';
 import '@/app/globals.css';
 import connectDB from '@/config/database';
 import HomeProperties from '@/components/HomeProperties';
+import WhyChooseUs from '@/components/WhyChooseUs';
 connectDB();
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
       <Hero />
       <InfoBoxes />
       <HomeProperties />
+      <WhyChooseUs />
     </>
   );
 }
