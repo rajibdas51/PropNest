@@ -6,6 +6,10 @@ declare module 'next-auth' {
     role: string;
     provider: string;
   }
+
+  interface Profile {
+    picture?: string;
+  }
   interface Session {
     user: User & {
       _id: string;
