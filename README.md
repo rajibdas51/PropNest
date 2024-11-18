@@ -4,7 +4,7 @@
 
 [**Live Demo**](https://propnest.vercel.app/)
 
-![PropNest Screenshot](public/images/screenshot.png)
+<img src="/public/images/screenshot.png" />
 
 ---
 
